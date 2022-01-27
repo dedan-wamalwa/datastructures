@@ -23,3 +23,20 @@ s.push(9)
 s.pop()
 print(s.isempty())
 print(list(s.stack))
+
+# exercise: reverse a string using a stack
+class Stack2:
+    def __init__(self):
+        self.stack=deque()
+    def push(self,val):
+        for x in val:
+            self.stack.append(x)
+    def reverse(self):
+        rev=""
+        for x in list(self.stack):
+            rev+=self.stack.pop()
+        print("Reversed form is :"+rev)
+s2=Stack2()
+s2.push("my name is Dedan")
+s2.reverse()
+
