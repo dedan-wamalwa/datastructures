@@ -40,3 +40,37 @@ s2=Stack2()
 s2.push("my name is Dedan")
 s2.reverse()
 
+# exercise to check whether paranthesis are balanced
+class Stack2:
+    def __init__(self):
+        self.stack=deque()
+    def balanced(self,val):
+        val=str(val)
+        for x in val:
+            if x=="[":
+                self.stack.append(x)
+            if x=="]":
+                try:
+                    self.stack.pop()
+                except IndexError:
+                    return False
+            if x=="{":
+                self.stack.append(x)
+            if x=="}":
+                try:
+                    self.stack.pop()
+                except IndexError:
+                    return False
+            if x=="(":
+                self.stack.append(x)
+            if x==")":
+                try:
+                    self.stack.pop()
+                except IndexError:
+                    return False
+        if len(list(self.stack))!=0:
+                return False
+        return True
+
+s3=Stack2()
+print(s3.balanced("(56)67(()){}[]"))
