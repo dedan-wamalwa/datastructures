@@ -1,5 +1,6 @@
 # implement stack using collection.deque bcoz is more efficient than a dynamic array
 from collections import deque
+# stack has pop and push operations
 class Stack:
     def __init__(self):
         self.stack=deque()
@@ -74,3 +75,32 @@ class Stack2:
 
 s3=Stack2()
 print(s3.balanced("(56)67(()){}[]"))
+
+# queues
+# has a front and rear
+# operations include enque and deque
+class Queue:
+    def __init__(self):
+        self.que=deque()
+    def enqueue(self,value):
+        self.que.appendleft(value)
+    def deque_(self):
+        self.que.pop()
+    def isempty(self):
+        if len(list(self.que))==0:
+            return True
+        return False
+    def display(self):
+        print(list(self.que))
+q1=Queue()
+q1.enqueue(5)
+q1.enqueue(6)
+q1.enqueue(7)
+q1.enqueue(8)
+q1.display()
+q1.deque_()
+q1.deque_()
+q1.deque_()
+q1.deque_()
+q1.display()
+print(q1.isempty())
