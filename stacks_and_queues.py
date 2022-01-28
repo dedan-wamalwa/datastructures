@@ -86,8 +86,10 @@ class Queue:
         self.que.appendleft(value)
     def deque_(self):
         self.que.pop()
+    def size(self):
+        return len(self.que)
     def isempty(self):
-        if len(list(self.que))==0:
+        if self.size()==0:
             return True
         return False
     def display(self):
@@ -100,7 +102,8 @@ q1.enqueue(8)
 q1.display()
 q1.deque_()
 q1.deque_()
-q1.deque_()
-q1.deque_()
+# q1.deque_()
+# q1.deque_()
 q1.display()
 print(q1.isempty())
+print(q1.size())
