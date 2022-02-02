@@ -1,34 +1,26 @@
 
 class Treenode:
-    def __init__(self,data,rank):
-        self.data=data
+    def __init__(self,name,rank):
+        self.name=name
         self.rank=rank
         self.children=[]
         self.parent=None
     def add_child(self,child):
         child.parent=self
         self.children.append(child)
-    def print_tree(self):
+    def print_tree(self,data):
+        data=str(data).lower()
         spaces="  "*self.get_level()
         prefix=spaces+ "|__" if self.parent else ""
-        print(prefix+self.data+" ( "+ self.rank +" )")
+        if data=="name":
+            print(prefix+self.name)
+        elif data== "designation":
+            print(prefix+self.rank)
+        else:
+            print(prefix+self.name+" ( "+ self.rank +" )")
         if self.children:
             for child in self.children:
-                child.print_tree()
-    def print_name(self):
-        spaces="  "*self.get_level()
-        prefix=spaces+ "|__" if self.parent else ""
-        print(prefix+self.data)
-        if self.children:
-            for child in self.children:
-                child.print_name()
-    def print_rank(self):
-        spaces="  "*self.get_level()
-        prefix=spaces+ "|__" if self.parent else ""
-        print(prefix+self.rank)
-        if self.children:
-            for child in self.children:
-                child.print_rank()
+                child.print_tree(data)
     def get_level(self):
         level=0
         p=self.parent
@@ -63,7 +55,7 @@ def build_tree():
 
 if __name__ =="__main__":
     root=build_tree()
-    # root.print_tree()
-    root.print_rank()
-    root.print_name()
+    root.print_tree("name")
+    root.print_tree("designation")
+    root.print_tree("both")
 
