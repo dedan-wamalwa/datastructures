@@ -21,6 +21,16 @@ class Treenode:
         if self.children:
             for child in self.children:
                 child.print_tree(data)
+    def print_upto_level(self,level):
+        spaces="  "*self.get_level()
+        prefix=spaces+ "|__" if self.parent else ""  
+        print(prefix+self.name+" ( "+ self.rank +" )")
+        if self.children:
+            for child in self.children:
+                if child.get_level()>level:
+                    break
+                else:
+                    child.print_upto_level(level)
     def get_level(self):
         level=0
         p=self.parent
@@ -55,7 +65,8 @@ def build_tree():
 
 if __name__ =="__main__":
     root=build_tree()
-    root.print_tree("name")
-    root.print_tree("designation")
+    # root.print_tree("name")
+    # root.print_tree("designation")
     root.print_tree("both")
+    root.print_upto_level(1)
 
